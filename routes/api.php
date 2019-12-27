@@ -22,4 +22,12 @@ Route::group(['namespace' => 'Api'] , function(){
     Route::post('/register','AuthController@register');
     Route::post('/login','AuthController@login')->name('login');
 
-});
+    // Routes need Authentication
+    //Route::get('/profile','UserController@Profile')->middleware('auth:api');
+    Route::group(['prefix' => 'user' ,'middleware' => 'auth:api'], function(){
+        Route::get('/profile','UserController@Profile');
+        Route::post('/profile','UserController@updateProfile');
+    });
+
+}); /// postman link
+/// https://www.getpostman.com/collections/0a890e21dd2c0126617d

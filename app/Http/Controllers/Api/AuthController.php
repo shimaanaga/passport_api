@@ -21,7 +21,7 @@ class AuthController extends Controller
             'last_name'     => 'sometimes|string|max:191',
             'email'         => 'required|email|unique:users|string|max:191',
             'password'      => 'required|string|min:6|confirmed',
-            'country_id'    => 'required|exists:countries,id',
+            'country_id'    => 'sometimes|exists:countries,id',
             'birth_date'    => 'sometimes|date|date_format:Y-m-d|before:2001-01-01',
         ];
 
